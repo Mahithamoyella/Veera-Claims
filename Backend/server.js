@@ -130,7 +130,7 @@ app.get('/api/claims/:id', async (req, res) => {
     
     claim.attachments = attachments.map(att => ({
       name: att.file_name,
-      url: `http://34.229.100.84:3069/${att.file_path}`,
+      url: `http://34.229.100.84:3069/uploads/${encodeURIComponent(att.file_path)}`,
       size: att.file_size
     }));
     
@@ -158,7 +158,7 @@ app.get('/api/claims/employee/:employeeId', async (req, res) => {
       );
       claim.attachments = attachments.map(att => ({
         name: att.file_name,
-        url: `http://34.229.100.84:3069/${att.file_path}`,
+        url: `http://34.229.100.84:3069/uploads/${encodeURIComponent(att.file_path)}`,
         size: att.file_size
       }));
     }
@@ -220,7 +220,7 @@ await pool.query(
 
     claim.attachments = attachments.map(att => ({
       name: att.file_name,
-      url: `http://34.229.100.84:3069/${att.file_path}`,
+      url: `http://34.229.100.84:3069/uploads/${encodeURIComponent(att.file_path)}`,
       size: att.file_size
     }));
 
