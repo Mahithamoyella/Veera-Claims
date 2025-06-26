@@ -5,7 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const app = express();
-const port = 3007;
+const port = 3069;
 
 // Middleware
 app.use(cors());
@@ -101,7 +101,7 @@ app.get('/api/claims', async (req, res) => {
 // When retrieving files, construct the URL properly
 claim.attachments = attachments.map(att => ({
   name: att.file_name,
-  url: `http://13.219.92.222:3007/uploads/${encodeURIComponent(att.file_path)}`,
+  url: `http://34.229.100.84:3069/uploads/${encodeURIComponent(att.file_path)}`,
   size: att.file_size
 }));
     }
@@ -130,7 +130,7 @@ app.get('/api/claims/:id', async (req, res) => {
     
     claim.attachments = attachments.map(att => ({
       name: att.file_name,
-      url: `http://13.219.92.222:3007/${att.file_path}`,
+      url: `http://34.229.100.84:3069/${att.file_path}`,
       size: att.file_size
     }));
     
@@ -158,7 +158,7 @@ app.get('/api/claims/employee/:employeeId', async (req, res) => {
       );
       claim.attachments = attachments.map(att => ({
         name: att.file_name,
-        url: `http://13.219.92.222:3007/${att.file_path}`,
+        url: `http://34.229.100.84:3069/${att.file_path}`,
         size: att.file_size
       }));
     }
@@ -220,7 +220,7 @@ await pool.query(
 
     claim.attachments = attachments.map(att => ({
       name: att.file_name,
-      url: `http://13.219.92.222:3007/${att.file_path}`,
+      url: `http://34.229.100.84:3069/${att.file_path}`,
       size: att.file_size
     }));
 
@@ -266,5 +266,5 @@ app.put('/api/claims/:id', async (req, res) => {
 // Start server
 app.listen(port, async () => {
   await initializeDatabase();
-  console.log(`Server running on http://13.219.92.222:${port}`);
+  console.log(`Server running on http://34.229.100.84:${port}`);
 });
